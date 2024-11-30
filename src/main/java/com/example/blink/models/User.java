@@ -15,6 +15,7 @@ public class User {
     private String password;
     private String phoneNumber;
     private String address;
+    private String role;
 
     @OneToMany
     private List<Orders> orders;
@@ -28,7 +29,7 @@ public class User {
     @OneToMany
     private List<Review> review;
 
-    public User(Long userId, String firstName, String lastName, String email, String password, String phoneNumber, String address, List<Orders> orders, List<Payment> payment, List<Cart> cart, List<Review> review) {
+    public User(Long userId, String firstName, String lastName, String email, String password, String phoneNumber, String address, String role, List<Orders> orders, List<Payment> payment, List<Cart> cart, List<Review> review) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,6 +37,7 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.role = role;
         this.orders = orders;
         this.payment = payment;
         this.cart = cart;
@@ -100,6 +102,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public List<Orders> getOrders() {
