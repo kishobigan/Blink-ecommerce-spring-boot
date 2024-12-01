@@ -15,19 +15,21 @@ public class Product {
     private Double productPrice;
     private int quantity;
 
-    @ManyToMany
-    private List<Category> category;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "categoryId")
+    private Category category;
 
-    @OneToMany
+
+    @OneToMany(fetch = FetchType.EAGER)
     private List<OrderItem> orderItems;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Review> reviews;
 
-    public Product(Long productId, String productName, String productDescription, String productImage, Double productPrice, int quantity, List<Category> category, List<OrderItem> orderItems, List<CartItem> cartItems, List<Review> reviews) {
+    public Product(Long productId, String productName, String productDescription, String productImage, Double productPrice, int quantity, Category category, List<OrderItem> orderItems, List<CartItem> cartItems, List<Review> reviews) {
         this.productId = productId;
         this.productName = productName;
         this.productDescription = productDescription;
@@ -38,6 +40,14 @@ public class Product {
         this.orderItems = orderItems;
         this.cartItems = cartItems;
         this.reviews = reviews;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Product() {
@@ -92,13 +102,6 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public List<Category> getCategory() {
-        return category;
-    }
-
-    public void setCategory(List<Category> category) {
-        this.category = category;
-    }
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
