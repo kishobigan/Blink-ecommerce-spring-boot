@@ -12,7 +12,7 @@ public class Category {
     private String CategoryName;
     private String CategoryDescription;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Product> Products;
 
     public Category(Long categoryId, String categoryName, String categoryDescription, List<Product> products) {

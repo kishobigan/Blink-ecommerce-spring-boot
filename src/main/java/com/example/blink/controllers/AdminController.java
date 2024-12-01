@@ -18,11 +18,4 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping("/test")
-    public ResponseEntity<String> createAdmin(HttpServletRequest request, HttpServletResponse response) {
-        String userId = String.valueOf(request.getAttribute("userId"));
-        String userRole = (String) request.getAttribute("role");
-
-        return ResponseEntity.ok(userId + " " + userRole);
-    }
 }
