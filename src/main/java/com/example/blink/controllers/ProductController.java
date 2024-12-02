@@ -37,7 +37,6 @@ public class ProductController {
     // Update Product
     @PutMapping("/update-product")
     public ResponseEntity<Product> updateProduct(HttpServletRequest request, @RequestBody ProductRequest product) {
-        System.out.println("Update product Controller reached");
         if (!isAdmin(request)) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }

@@ -17,16 +17,16 @@ public class User {
     private String address;
     private String role;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Orders> orders;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Payment> payment;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Cart> cart;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Review> review;
 
     public User(Long userId, String firstName, String lastName, String email, String password, String phoneNumber, String address, String role, List<Orders> orders, List<Payment> payment, List<Cart> cart, List<Review> review) {
