@@ -10,14 +10,18 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
-    @ManyToOne
+    private double total;
+
+    @OneToOne
     private User user;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 
-    public Cart(Long cartId, User user, List<CartItem> cartItems) {
+
+    public Cart(Long cartId, double total, User user, List<CartItem> cartItems) {
         this.cartId = cartId;
+        this.total = total;
         this.user = user;
         this.cartItems = cartItems;
     }
@@ -48,5 +52,13 @@ public class Cart {
 
     public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }
