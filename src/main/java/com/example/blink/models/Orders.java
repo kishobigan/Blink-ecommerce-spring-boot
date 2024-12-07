@@ -21,8 +21,9 @@ public class Orders {
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
+
 
     @OneToOne
     private Payment payment;
